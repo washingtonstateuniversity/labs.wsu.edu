@@ -15,8 +15,10 @@
 				?><section class="row thirds gutter marginalize-ends"><?php
 			}
 
-			?><div class="column <?php echo $hc_class[ $hc ]; ?>">
+			?><div class="column <?php echo $hc_class[ $hc ]; ?> block-lab-site">
 				<?php echo $lab_site['site_name']; ?>
+
+				<a href="<?php echo esc_url( $lab_site['site_url'] ); ?>">Visit</a>
 			</div><?php
 
 			if ( 2 === $hc ) {

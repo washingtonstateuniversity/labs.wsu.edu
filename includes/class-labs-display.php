@@ -10,6 +10,7 @@ class Labs_Front_Display {
 		foreach ( $sites as $k => $site ) {
 			switch_to_blog( $site['blog_id'] );
 			$sites[ $k ]['site_name'] = get_option( 'blogname' );
+			$sites[ $k ]['site_url'] = home_url();
 			restore_current_blog();
 		}
 
