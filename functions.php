@@ -8,7 +8,7 @@ include __DIR__ . '/includes/class-labs-display.php';
  * @return string Current script version
  */
 function wsu_labs_theme_script_version() {
-	return spine_get_script_version() . '0.0.1';
+	return spine_get_script_version() . '0.0.3';
 }
 
 add_action( 'wp_enqueue_scripts', 'wsu_labs_theme_enqueue_scripts', 11 );
