@@ -8,6 +8,7 @@ class Labs_Front_Display {
 		if ( $sites = wp_cache_get( 'wsu_lab_sites' ) ) {
 			return $sites;
 		}
+
 		$sites = wp_get_sites( array( 'network_id' => wsuwp_get_current_network()->id ) );
 
 		foreach ( $sites as $k => $site ) {
