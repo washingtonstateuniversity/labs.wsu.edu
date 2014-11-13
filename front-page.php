@@ -17,13 +17,15 @@
 		$hc = 0; // horizontal count
 		$hc_class = array( 'one', 'two', 'three' );
 		$bg_class = array( 'palette-a', 'palette-b', 'palette-c', 'palette-d', 'palette-e', 'palette-f' );
+		$max_rand = 5;
 
 		foreach ( $labs_sites as $lab_site ) {
 			if ( 0 === $hc ) {
 				?><section class="row thirds gutter"><?php
 			}
 
-			$p = rand( 0, 5 );
+			$p = rand( 0, $max_rand );
+
 			?><div class="column <?php echo $hc_class[ $hc ]; ?> block-lab-site <?php echo $bg_class[ $p ]; ?>">
 				<a href="<?php echo esc_url( $lab_site['site_url'] ); ?>">
 					<div class="column-internal">
@@ -37,6 +39,12 @@
 				echo '</section>';
 			} else {
 				$hc++;
+			}
+
+			// Only use grey once. ;)
+			if ( 5 === $p ) {
+				unset( $bg_class[ 5 ] );
+				$max_rand = 4;
 			}
 		}
 
