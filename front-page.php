@@ -16,14 +16,14 @@
 		$labs_sites = labs_theme_get_sites();
 		$hc = 0; // horizontal count
 		$hc_class = array( 'one', 'two', 'three' );
-		$bg_class = array( 'palette-a', 'palette-b', 'palette-c', 'palette-d' );
+		$bg_class = array( 'palette-a', 'palette-b', 'palette-c', 'palette-d', 'palette-e', 'palette-f' );
 
 		foreach ( $labs_sites as $lab_site ) {
 			if ( 0 === $hc ) {
 				?><section class="row thirds gutter"><?php
 			}
 
-			$p = rand( 0, 3 );
+			$p = rand( 0, 5 );
 			?><div class="column <?php echo $hc_class[ $hc ]; ?> block-lab-site <?php echo $bg_class[ $p ]; ?>">
 				<a href="<?php echo esc_url( $lab_site['site_url'] ); ?>">
 					<div class="column-internal">
