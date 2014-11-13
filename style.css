@@ -8,6 +8,46 @@
  Version:        0.0.1
 */
 
+.main-header {
+	display: none;
+}
+
 .block-lab-site {
 	height: 200px;
+}
+
+.column-internal {
+	height: 100%;
+	width: 100%;
+}
+
+.block-lab-site a {
+	text-decoration: none;
+}
+
+.block-lab-site a h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 2.2rem;
+	color: #2a3033;
+}
+
+.palette-0 {
+	background: #2a3033;
+}
+
+.palette-a {
+	background: #00a5bd;
+}
+
+.palette-b {
+	background: #f6861f;
+}
+
+.palette-c {
+	background: #ffb81c;
+}
+
+.palette-d {
+	background: #ada400;
 }
