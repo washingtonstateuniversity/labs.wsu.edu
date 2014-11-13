@@ -2,17 +2,41 @@
 
 	<main>
 
-		<?php get_template_part('parts/headers'); ?>
+		<?php
 
-		<section class="row single gutter marginalize-ends">
+		get_template_part('parts/headers');
 
-			<div class="column one">
+		$labs_sites = labs_theme_get_sites();
+		$hc = 0; // horizontal count
+		$hc_class = array( 'one', 'two', 'three' );
 
-			</div><!--/column-->
+		foreach ( $labs_sites as $lab_site ) {
+			if ( 0 === $hc ) {
+				?><section class="row thirds gutter marginalize-ends"><?php
+			}
 
-		</section>
+			?><div class="column <?php echo $hc_class[ $hc ]; ?>">
+				<?php echo $lab_site['path']; ?>
+			</div><?php
 
-	</main><!--/#page-->
+			if ( 2 === $hc ) {
+				$hc = 0;
+				echo '</section>';
+			} else {
+				$hc++;
+			}
+		}
 
+		// Close off remaining columns
+		if ( 0 !== $hc ) {
+			while ( $hc <= 2 ) {
+				echo '<div class="column ' . $hc_class[ $hc ] . '"></div>';
+				$hc++;
+			}
+			echo '</section>';
+		}
+
+		?>
+	</main>
 
 <?php get_footer();
