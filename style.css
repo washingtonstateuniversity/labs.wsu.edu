@@ -12,6 +12,17 @@
 	display: none;
 }
 
+.labs-title-section {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.labs-title-section h1 {
+	line-height: 200px;
+	font-size: 3rem;
+	color: #fcfcfc;
+}
+
 .block-lab-site {
 	height: 200px;
 	border-bottom: 1px solid #fff;
