@@ -5,6 +5,9 @@ class Labs_Front_Display {
 	}
 
 	public function get_sites() {
+		if ( $sites = wp_cache_get( 'wsu_lab_sites' ) ) {
+			return $sites;
+		}
 		$sites = wp_get_sites( array( 'network_id' => wsuwp_get_current_network()->id ) );
 
 		foreach ( $sites as $k => $site ) {
@@ -14,6 +17,8 @@ class Labs_Front_Display {
 			restore_current_blog();
 		}
 
+		wp_cache_add( 'wsu_lab_sites', $sites, '', 3600 );
+		
 		return $sites;
 	}
 }
