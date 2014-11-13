@@ -7,7 +7,7 @@
 		get_template_part('parts/headers');
 
 		?>
-		<section class="single wide gutter block-lab-site labs-title palette-0">
+		<section class="single wide gutter block-lab-site labs-title-section palette-0">
 			<div class="column one">
 				<h1>Labs at Washington State University</h1>
 			</div>
