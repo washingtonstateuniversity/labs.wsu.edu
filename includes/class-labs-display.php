@@ -18,7 +18,7 @@ class Labs_Front_Display {
 		}
 
 		wp_cache_add( 'wsu_lab_sites', $sites, '', 3600 );
-		
+
 		return $sites;
 	}
 }
