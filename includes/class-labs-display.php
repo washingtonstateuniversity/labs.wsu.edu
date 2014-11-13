@@ -5,7 +5,15 @@ class Labs_Front_Display {
 	}
 
 	public function get_sites() {
-		return wp_get_sites( array( 'network_id' => wsuwp_get_current_network()->id ) );
+		$sites = wp_get_sites( array( 'network_id' => wsuwp_get_current_network()->id ) );
+
+		foreach ( $sites as $k => $site ) {
+			switch_to_blog( $site['blog_id'] );
+			$sites[ $k ]['site_name'] = get_option( 'blogname' );
+			restore_current_blog();
+		}
+
+		return $sites;
 	}
 }
 global $labs_front_display;

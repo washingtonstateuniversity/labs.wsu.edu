@@ -16,7 +16,7 @@
 			}
 
 			?><div class="column <?php echo $hc_class[ $hc ]; ?>">
-				<?php echo $lab_site['path']; ?>
+				<?php echo $lab_site['site_name']; ?>
 			</div><?php
 
 			if ( 2 === $hc ) {
