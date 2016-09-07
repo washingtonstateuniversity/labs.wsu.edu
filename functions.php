@@ -1,7 +1,5 @@
 <?php
 
-include __DIR__ . '/includes/class-labs-display.php';
-
 /**
  * Provide a cache breaking script version for the theme.
  *

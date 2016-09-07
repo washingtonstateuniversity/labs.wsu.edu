@@ -13,7 +13,7 @@
 			</div>
 		</section>
 		<?php
-		$labs_sites = labs_theme_get_sites();
+		$labs_sites = get_sites( array( 'network_id' => get_current_network_id() ) );
 		$hc = 0; // horizontal count
 		$hc_class = array( 'one', 'two', 'three' );
 		$bg_class = array( 'palette-a', 'palette-b', 'palette-c', 'palette-d', 'palette-e', 'palette-f' );
@@ -27,9 +27,9 @@
 			$p = rand( 0, $max_rand );
 
 			?><div class="column <?php echo $hc_class[ $hc ]; ?> block-lab-site <?php echo $bg_class[ $p ]; ?>">
-				<a href="<?php echo esc_url( $lab_site['site_url'] ); ?>">
+				<a href="<?php echo esc_url( $lab_site->home ); ?>">
 					<div class="column-internal">
-					<h3><?php echo $lab_site['site_name']; ?></h3>
+					<h3><?php echo $lab_site->blogname; ?></h3>
 					</div>
 				</a>
 			</div><?php
