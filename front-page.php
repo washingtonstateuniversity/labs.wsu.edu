@@ -1,4 +1,19 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Provide a callback to help sort a list of labs by their names.
+ *
+ * @param WP_Site $a First site to compare.
+ * @param WP_Site $b Second site to compare.
+ *
+ * @return int
+ */
+function sort_labs_sites( $a, $b ) {
+	return strcmp( $a->blogname, $b->blogname );
+}
+
+get_header();
+
+?>
 
 	<main>
 
@@ -16,6 +31,8 @@
 		</section>
 		<?php
 		$labs_sites = get_sites( array( 'network_id' => get_current_network_id(), 'number' => 0 ) );
+
+		usort( $labs_sites, 'sort_labs_sites' );
 		?>
 		<section class="row side-right gutter padded-ends">
 			<div class="column one labs-list">
