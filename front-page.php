@@ -6,6 +6,15 @@
 
 		get_template_part('parts/headers');
 
+		?><section class="row side-right gutter padded-ends">
+			<div class="column one">
+		<?php
+		if ( have_posts() ) : the_post(); the_content(); endif;
+		?>
+			</div>
+			<div class="column two"></div>
+		</section>
+		<?php
 		$labs_sites = get_sites( array( 'network_id' => get_current_network_id(), 'number' => 0 ) );
 		?>
 		<section class="row side-right gutter padded-ends">
