@@ -7,3 +7,13 @@
  Template:       spine
  Version:        0.0.3
 */
+
+html {
+	background-color: #fff;
+	background-image: none;
+}
+
+body {
+	color: #363636;
+	line-height: 1.5;
+}
