@@ -6,7 +6,7 @@
 
 		get_template_part('parts/headers');
 
-		$labs_sites = get_sites( array( 'network_id' => get_current_network_id() ) );
+		$labs_sites = get_sites( array( 'network_id' => get_current_network_id(), 'number' => 0 ) );
 		?>
 		<section class="row side-right gutter padded-ends">
 			<div class="column one labs-list">
