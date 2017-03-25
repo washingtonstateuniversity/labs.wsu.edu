@@ -35,6 +35,16 @@ function wsu_labs_display_site_list() {
 				continue;
 			}
 
+			// Only display labs that have more than the first test post written.
+			if ( 1 <= $lab_site->post_count ) {
+				continue;
+			}
+
+			// Sites without names don't display so well in this list.
+			if ( empty( $lab_site->blogname ) ) {
+				continue;
+			}
+
 			?><li><a href="<?php echo esc_url( $lab_site->home ); ?>"><?php echo esc_html( $lab_site->blogname ); ?></a></li><?php
 		}
 		?>
