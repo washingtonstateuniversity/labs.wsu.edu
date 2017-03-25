@@ -36,7 +36,7 @@ function wsu_labs_display_site_list() {
 			}
 
 			// Only display labs that have more than the first test post written.
-			if ( 1 <= $lab_site->post_count ) {
+			if ( 1 >= $lab_site->post_count ) {
 				continue;
 			}
 
