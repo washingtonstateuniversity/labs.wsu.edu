@@ -35,13 +35,17 @@ function wsu_labs_display_site_list() {
 				continue;
 			}
 
-			// Only display labs that have more than the first test post written.
-			if ( 1 >= $lab_site->post_count ) {
+			// Sites without names don't display so well in this list.
+			if ( empty( $lab_site->blogname ) ) {
 				continue;
 			}
 
-			// Sites without names don't display so well in this list.
-			if ( empty( $lab_site->blogname ) ) {
+			switch_to_blog( $lab_site->id );
+			$page_count = wp_count_posts( 'page' );
+			restore_current_blog();
+
+			// Only display lab sites that have more than one post and/or more than 2 pages.
+			if ( 1 >= $lab_site->post_count && 2 >= $page_count->publish ) {
 				continue;
 			}
 
