@@ -16,6 +16,11 @@ add_shortcode( 'labs_list', 'wsu_labs_display_site_list' );
  * Displays an unordered list of sites on the network.
  */
 function wsu_labs_display_site_list() {
+	$content = wp_cache_get( 'wsu:labs:list' );
+	if ( $content ) {
+		return $content;
+	}
+
 	$labs_sites = get_sites( array( 'network_id' => get_current_network_id(), 'number' => 0 ) );
 
 	usort( $labs_sites, 'wsu_labs_sort_sites' );
@@ -57,6 +62,9 @@ function wsu_labs_display_site_list() {
 
 	$content = ob_get_contents();
 	ob_end_clean();
+
+	// Cache list for 30 minutes.
+	wp_cache_set( 'wsu:labs:list', $content, '', 1800 );
 
 	return $content;
 }
