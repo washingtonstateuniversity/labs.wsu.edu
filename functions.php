@@ -16,6 +16,11 @@ add_shortcode( 'labs_list', 'wsu_labs_display_site_list' );
  * Displays an unordered list of sites on the network.
  */
 function wsu_labs_display_site_list() {
+	$content = wp_cache_get( 'wsu:labs:list' );
+	if ( $content ) {
+		return $content;
+	}
+
 	$labs_sites = get_sites( array( 'network_id' => get_current_network_id(), 'number' => 0 ) );
 
 	usort( $labs_sites, 'wsu_labs_sort_sites' );
@@ -35,13 +40,17 @@ function wsu_labs_display_site_list() {
 				continue;
 			}
 
-			// Only display labs that have more than the first test post written.
-			if ( 1 >= $lab_site->post_count ) {
+			// Sites without names don't display so well in this list.
+			if ( empty( $lab_site->blogname ) ) {
 				continue;
 			}
 
-			// Sites without names don't display so well in this list.
-			if ( empty( $lab_site->blogname ) ) {
+			switch_to_blog( $lab_site->id );
+			$page_count = wp_count_posts( 'page' );
+			restore_current_blog();
+
+			// Only display lab sites that have more than one post and/or more than 2 pages.
+			if ( 1 >= $lab_site->post_count && 2 >= $page_count->publish ) {
 				continue;
 			}
 
@@ -53,6 +62,9 @@ function wsu_labs_display_site_list() {
 
 	$content = ob_get_contents();
 	ob_end_clean();
+
+	// Cache list for 30 minutes.
+	wp_cache_set( 'wsu:labs:list', $content, '', 1800 );
 
 	return $content;
 }
