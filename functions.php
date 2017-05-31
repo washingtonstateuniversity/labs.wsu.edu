@@ -7,6 +7,8 @@ add_shortcode( 'labs_list', 'WSU\Theme\Labs\display_labs_list_shortcode' );
 /**
  * Provide a callback to help sort a list of labs by their names.
  *
+ * @since 0.0.6
+ *
  * @param \WP_Site $a First site to compare.
  * @param \WP_Site $b Second site to compare.
  *
@@ -18,6 +20,8 @@ function sort_sites( $a, $b ) {
 
 /**
  * Displays an unordered list of sites on the network.
+ *
+ * @since 0.0.6
  */
 function display_labs_list_shortcode() {
 	$content = wp_cache_get( 'wsu:labs:list' );
