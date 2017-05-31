@@ -50,11 +50,6 @@ function display_labs_list_shortcode() {
 	<ul>
 		<?php
 		foreach ( $labs_sites as $lab_site ) {
-			// Skip the main network site.
-			if ( 'labs.wp.wsu.edu' === $lab_site->domain ) {
-				continue;
-			}
-
 			// Skip the main labs site.
 			if ( 'labs.wsu.edu' === $lab_site->domain && '/' === $lab_site->path ) {
 				continue;
