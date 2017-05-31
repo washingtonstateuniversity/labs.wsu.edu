@@ -29,7 +29,19 @@ function display_labs_list_shortcode() {
 		return $content;
 	}
 
-	$labs_sites = get_sites( array( 'network_id' => get_current_network_id(), 'number' => 0 ) );
+	$labs_sites = get_sites( array(
+		'network_id' => 0,
+		'number' => 0,
+		'domain__in' => array(
+			'labs.wsu.edu',
+			'genomics.wsu.edu',
+			'kessler.wsu.edu',
+			'ssl.wsu.edu',
+			'lcme.wsu.edu',
+			'skinner.wsu.edu',
+			'genomicnursing.wsu.edu',
+		),
+	) );
 
 	usort( $labs_sites, 'WSU\Theme\Labs\sort_sites' );
 	ob_start();
