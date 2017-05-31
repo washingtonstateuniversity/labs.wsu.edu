@@ -1,21 +1,25 @@
 <?php
+
+namespace WSU\Theme\Labs;
+
+add_shortcode( 'labs_list', 'WSU\Theme\Labs\display_labs_list_shortcode' );
+
 /**
  * Provide a callback to help sort a list of labs by their names.
  *
- * @param WP_Site $a First site to compare.
- * @param WP_Site $b Second site to compare.
+ * @param \WP_Site $a First site to compare.
+ * @param \WP_Site $b Second site to compare.
  *
  * @return int
  */
-function wsu_labs_sort_sites( $a, $b ) {
+function sort_sites( $a, $b ) {
 	return strcmp( $a->blogname, $b->blogname );
 }
 
-add_shortcode( 'labs_list', 'wsu_labs_display_site_list' );
 /**
  * Displays an unordered list of sites on the network.
  */
-function wsu_labs_display_site_list() {
+function display_labs_list_shortcode() {
 	$content = wp_cache_get( 'wsu:labs:list' );
 	if ( $content ) {
 		return $content;
@@ -23,7 +27,7 @@ function wsu_labs_display_site_list() {
 
 	$labs_sites = get_sites( array( 'network_id' => get_current_network_id(), 'number' => 0 ) );
 
-	usort( $labs_sites, 'wsu_labs_sort_sites' );
+	usort( $labs_sites, 'WSU\Theme\Labs\sort_sites' );
 	ob_start();
 
 	?>
