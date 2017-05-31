@@ -64,7 +64,7 @@ function display_labs_list_shortcode() {
 			$page_count = wp_count_posts( 'page' );
 			restore_current_blog();
 
-			// Only display lab sites that have more than one post and/or more than 2 pages.
+			// Skip sites that do not have more than one post and/or more than 2 pages.
 			if ( 1 >= $lab_site->post_count && 2 >= $page_count->publish ) {
 				continue;
 			}
