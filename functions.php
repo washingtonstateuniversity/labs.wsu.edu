@@ -40,6 +40,7 @@ function display_labs_list_shortcode() {
 			'lcme.wsu.edu',
 			'skinner.wsu.edu',
 			'genomicnursing.wsu.edu',
+			'hydrogen.wsu.edu',
 		),
 	) );
 
